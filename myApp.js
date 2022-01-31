@@ -1,5 +1,10 @@
-require('dotenv').config();
+require('dotenv').config({
+    path: `${__dirname}/sample.env`
+  })
+const dbUrl = process.env.MONGO_URI;
+var mongoose = require('mongoose');
 
+mongoose.connect(dbUrl, {useNewUrlParser: true, unUnifiedTopology: true});
 
 let Person;
 
