@@ -6,7 +6,15 @@ var mongoose = require('mongoose');
 
 mongoose.connect(dbUrl, {useNewUrlParser: true, unUnifiedTopology: true});
 
-let Person;
+
+const Schema = mongoose.Schema
+const personSchema = new Schema({
+  name:{type: String, required: true},
+  age: Number,
+  favoriteFoods: [String]
+});
+
+const Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
