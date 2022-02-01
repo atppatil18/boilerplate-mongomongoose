@@ -13,11 +13,18 @@ const personSchema = new Schema({
   age: Number,
   favoriteFoods: [String]
 });
-
+// Below line create model
 const Person = mongoose.model("Person", personSchema);
 
+
+
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+    const atulPatil = new Person({name: "Atul", age: 25, favoriteFoods:["A", "B", "C"]})
+    atulPatil.save(function(err, data){
+      if(err) return console.log(err)
+      done(null, data)
+    });
+  //done(null /*, data*/);
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
